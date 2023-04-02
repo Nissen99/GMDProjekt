@@ -1,18 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerInput _playerInput;
+    private IPlayerInput _playerInput;
     private Animator _animator;
     [SerializeField] private int speed;
     private static readonly int animatorSpeed = Animator.StringToHash("Speed");
 
     private void Awake()
     {
-        _playerInput = GetComponent<PlayerInput>();
+        _playerInput = GetComponent<IPlayerInput>();
         _animator = GetComponent<Animator>();
     }
 
@@ -26,10 +27,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        //Animation
-        _animator.SetFloat(animatorSpeed, _playerInput.MovementIntent.magnitude);
+            //Animation
+            if (_playerInput.MovementIntent != new Vector3(0, 0, 0))
+            {
+                var rotation = Quaternion.LookRotation(_playerInput.MovementIntent);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f * Time.deltaTime);
+                transform.Translate(Vector3.forward * (speed * Time.deltaTime));
+                _animator.SetFloat(animatorSpeed, _playerInput.MovementIntent.magnitude);
 
-        gameObject.transform.Translate(_playerInput.MovementIntent * (speed * Time.deltaTime));
- 
+            }
+            else
+            {
+                _animator.SetFloat(animatorSpeed, 0);
+                
+            }
+
     }
 }
