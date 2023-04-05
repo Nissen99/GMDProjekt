@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private IPlayerInput _playerInput;
     private Animator _animator;
     [SerializeField] private int speed;
+    [SerializeField] private int rotationSpeed;
     private static readonly int animatorSpeed = Animator.StringToHash("Speed");
 
     private void Awake()
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
             if (_playerInput.MovementIntent != new Vector3(0, 0, 0))
             {
                 var rotation = Quaternion.LookRotation(_playerInput.MovementIntent);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
                 transform.Translate(Vector3.forward * (speed * Time.deltaTime));
                 _animator.SetFloat(animatorSpeed, _playerInput.MovementIntent.magnitude);
 
