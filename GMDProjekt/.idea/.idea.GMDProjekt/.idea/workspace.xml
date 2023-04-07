@@ -2,13 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95c779d5-84d7-46e3-9b04-8958e2309420" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GroundIndicatorOnMove.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GroundIndicatorOnMove.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Character/Animations/Motions/InvigoratingStrike.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Character/Animations/Motions/InvigoratingStrike.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Camera.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/AttackManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/AttackManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/IAttackManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/IAttackManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attackable.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attackable/Attackable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attackable/Attackable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attackable/IAttackable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attackable/IAttackable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/IAttack.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/IAttack.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/InvigoratingStrike.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/InvigoratingStrike.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HpController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HpController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/IHpController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/IHpController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInputWithMouse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Movement.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Movement/IPlayerMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Movement/IPlayerMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Movement/PlayerMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/TAGS.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/TAGS.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GroundIndicatorOnMove.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GroundIndicatorOnMove.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Character/Animations/AnimatorControllers/CharacterAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Character/Animations/AnimatorControllers/CharacterAnimatorController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/PlayerInputMouseMovement.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/PlayerInputMouseMovement.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraFollow.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GroundIndicatorOnMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Util/GroundIndicatorOnMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GroundIndicatorOnMove.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Util/GroundIndicatorOnMove.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/IPlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IPlayerInput.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/IPlayerInput.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInputKeyboard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInputKeyboard.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInputWithMouse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInputWithMouse.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInputWithMouse.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement/PlayerMovement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +59,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Camera/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -76,10 +119,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7120">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="7120" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -97,7 +140,9 @@
       <updated>1680461403852</updated>
       <workItem from="1680461406384" duration="3702000" />
       <workItem from="1680472067036" duration="5604000" />
-      <workItem from="1680730209146" duration="78000" />
+      <workItem from="1680730209146" duration="365000" />
+      <workItem from="1680807367764" duration="7401000" />
+      <workItem from="1680885164809" duration="5976000" />
     </task>
     <servers />
   </component>

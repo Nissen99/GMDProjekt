@@ -6,7 +6,7 @@
             "id": "f2e5f1e9-b3e1-484f-9877-ad058329f76c",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Primary",
                     "type": "Button",
                     "id": "eb67a0ab-e981-47e6-9746-b944508b7cfb",
                     "expectedControlType": "Button",
@@ -23,7 +23,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Primary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
