@@ -42,13 +42,13 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.CompareTag(TAGS.GROUND))
+            if (hit.transform.CompareTag(TAGS.GROUND_TAG))
             {
                 _latestMovementClick = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 Instantiate(toSpawnWhenClicked, new Vector3(hit.point.x, hit.point.y + 0.0f, hit.point.z), Quaternion.identity);
             } 
             
-            if (hit.transform.CompareTag(TAGS.ENEMY))
+            if (hit.transform.CompareTag(TAGS.ENEMY_TAG))
             {
                 var enemy = hit.transform.GetComponent<IAttackable>();
                 _attackManager.PrimaryAttack(enemy);

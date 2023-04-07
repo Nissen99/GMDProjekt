@@ -37,7 +37,6 @@ namespace Combat.AttackManager
             {
                 _toPrimaryAttack = null;
                 _playerMovement.StopMoving();
-                _playerMovement.FacePoint(positionOfToAttack);
                 _primaryAttack.Attack(toAttack);
             }
             else

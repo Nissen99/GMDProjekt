@@ -2,7 +2,8 @@
 {
     public class TAGS
     {
-        public static string GROUND = "Ground";
-        public static string ENEMY = "Enemy";
+        public static string PLAYER = "Player";
+        public static string GROUND_TAG = "Ground";
+        public static string ENEMY_TAG = "Enemy";
     }
 }

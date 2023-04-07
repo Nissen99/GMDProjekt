@@ -26,8 +26,9 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     void Update()
     {
         if (_movementIntent != new Vector3(0, 0, 0))
-        {
-            FacePoint(_movementIntent);
+        {      
+            var rotation = Quaternion.LookRotation(_movementIntent);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
             transform.Translate(Vector3.forward * (speed * Time.deltaTime));
             _animator.SetFloat(animatorSpeed, _movementIntent.magnitude);
         }
@@ -58,14 +59,6 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     {
         _movementIntent = new Vector3(0, 0, 0);
     }
-
-    public void FacePoint(Vector3 pointToFace)
-    {
-        var rotation = Quaternion.LookRotation(pointToFace);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-    }
-
-
     private bool CheckEqualWithinErrorMargin(Vector3 v1, Vector3 v2, float acceptedError)
     {
         if (Mathf.Abs(v1.x - v2.x) > acceptedError)
