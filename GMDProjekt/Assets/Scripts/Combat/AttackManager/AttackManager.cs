@@ -13,12 +13,12 @@ namespace Combat.AttackManager
         private bool _isAttacking;
 
 
-        private IPlayerMovement _playerMovement;
+        private IMovement _movement;
         private IAttack _primaryAttack;
         void Start()
         {
             _primaryAttack = GetComponent<InvigoratingStrike>();
-            _playerMovement = GetComponent<IPlayerMovement>();
+            _movement = GetComponent<IMovement>();
         }
 
         private void FixedUpdate()
@@ -36,12 +36,12 @@ namespace Combat.AttackManager
             if (canAttack(_primaryAttack.AttackRange, positionOfToAttack))
             {
                 _toPrimaryAttack = null;
-                _playerMovement.StopMoving();
+                _movement.StopMoving();
                 _primaryAttack.Attack(toAttack);
             }
             else
             {
-                _playerMovement.Move(positionOfToAttack);
+                _movement.Move(positionOfToAttack);
                 _toPrimaryAttack = toAttack;
             }
         }

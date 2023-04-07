@@ -12,14 +12,14 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
     [SerializeField] private GameObject toSpawnWhenClicked;
     private delegate void ResetIntents();
 
-    private IPlayerMovement _playerMovement;
+    private IMovement _movement;
     private IAttackManager _attackManager;
     
     private ResetIntents _resetIntents;
     // Start is called before the first frame update
     void Start()
     {
-        _playerMovement = GetComponent<IPlayerMovement>();
+        _movement = GetComponent<IMovement>();
         _attackManager = GetComponent<IAttackManager>();
 
         _resetIntents = resetIntent;
@@ -30,7 +30,7 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
     {
         if (_latestMovementClick != null)
         {
-           _playerMovement.Move(_latestMovementClick.Value);
+           _movement.Move(_latestMovementClick.Value);
         }
     }
 
