@@ -1,26 +1,26 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DefaultNamespace;
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class InvigoratingStrike : MonoBehaviour, IAttack
+namespace Combat.Attacks
 {
-    [SerializeField] private int baseDamage;
-    public int AttackRange { get; } = 2;
-
-    private Animator _animator;
-    private void Start()
+    public class InvigoratingStrike : MonoBehaviour, IAttack
     {
-        _animator = GetComponent<Animator>();
-    }
+        public int BaseDamage { get; } = 20;
+        public int Range { get; } = 2;
+        public float Cooldown { get; } = 0f;
 
-    public void Attack(IAttackable toAttack)
-    {
-        _animator.Play("InvigoratingStrike");
-        toAttack.Attack(baseDamage);
-    }
+        private Animator _animator;
+        private void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        public bool Attack(IAttackable toAttack)
+        {
+            _animator.Play("InvigoratingStrike");
+            return toAttack.Attack(BaseDamage);
+        }
     
+    }
 }
 

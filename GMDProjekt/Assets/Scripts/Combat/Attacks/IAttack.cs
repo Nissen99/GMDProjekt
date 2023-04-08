@@ -1,8 +1,13 @@
-﻿namespace DefaultNamespace
+﻿using Palmmedia.ReportGenerator.Core.Parser;
+
+namespace DefaultNamespace
 {
     public interface IAttack
     {
-        public int AttackRange { get; }
-        void Attack(IAttackable toAttack);
+        public int BaseDamage { get; }
+        public int Range { get; }
+        public float Cooldown { get;  }
+        bool Attack(IAttackable toAttack);
+        
     }
 }

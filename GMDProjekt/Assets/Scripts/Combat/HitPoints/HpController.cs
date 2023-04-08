@@ -34,7 +34,7 @@ public class HpController : MonoBehaviour, IHpController
 
     private void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     
 }

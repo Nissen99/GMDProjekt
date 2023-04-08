@@ -1,4 +1,5 @@
 ﻿using System;
+using Combat.Attacks;
 using DefaultNamespace;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ namespace Combat.AttackManager
 
         private IMovement _movement;
         private IAttack _primaryAttack;
+        
+        [SerializeField] private float _globalCooldown = 2f;
+
+        private float? nextTimeToAttack;
         void Start()
         {
             _primaryAttack = GetComponent<InvigoratingStrike>();
@@ -33,15 +38,20 @@ namespace Combat.AttackManager
         public void PrimaryAttack(IAttackable toAttack)
         {
             var positionOfToAttack = toAttack.GetPosition();
-            if (canAttack(_primaryAttack.AttackRange, positionOfToAttack))
+            if (canAttack(_primaryAttack.Range, positionOfToAttack))
             {
                 _toPrimaryAttack = null;
                 _movement.StopMoving();
-                _primaryAttack.Attack(toAttack);
+               var died = _primaryAttack.Attack(toAttack);
+               nextTimeToAttack = Time.time + _globalCooldown;
+               if (died)
+               {
+                   _toPrimaryAttack = null;
+               }
             }
             else
             {
-                _movement.Move(positionOfToAttack);
+                moveIfNotInRange(_primaryAttack.Range, positionOfToAttack);
                 _toPrimaryAttack = toAttack;
             }
         }
@@ -51,11 +61,37 @@ namespace Combat.AttackManager
             _toPrimaryAttack = null;
         }
 
+        bool canAttack(int attackRange, Vector3 toAttackPosition)
+        {
+            return !isOnCooldown() && isInRangeToAttack(attackRange, toAttackPosition);
+            
+        }
+        
 
-        private bool canAttack(int attackRange, Vector3 toAttackPosition)
+        bool isInRangeToAttack(int attackRange, Vector3 toAttackPosition)
         {
             var distanceToAttack = Vector3.Distance(transform.position, toAttackPosition);
             return distanceToAttack <= attackRange;
+        }
+
+        bool isOnCooldown()
+        {
+            if (nextTimeToAttack == null)
+            {
+                return false;
+            }
+
+            return nextTimeToAttack > Time.time;
+        }
+
+        void moveIfNotInRange(int attackRange, Vector3 toAttackPosition)
+        {
+            if (isInRangeToAttack(attackRange, toAttackPosition))
+            {
+                return;
+            }
+            
+            _movement.Move(toAttackPosition);
         }
     }
 }
