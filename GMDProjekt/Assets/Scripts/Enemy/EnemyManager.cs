@@ -1,6 +1,8 @@
-﻿using DefaultNamespace;
+﻿using Combat.Attacks;
+using DefaultNamespace;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 namespace Enemy
 {
@@ -11,7 +13,7 @@ namespace Enemy
         private IAttackable _playerAttackable;
         private IMovement _movement;
 
-        private IAttack _attack;
+        private IPrimaryAttack _primaryAttack;
 
         [SerializeField] private float _globalCooldown = 2f;
 
@@ -23,7 +25,7 @@ namespace Enemy
             player = GameObject.FindGameObjectWithTag("Player");
             _playerAttackable = player.GetComponent<IAttackable>();
             _movement = GetComponent<IMovement>();
-            _attack = GetComponent<IAttack>();
+            _primaryAttack = GetComponent<IPrimaryAttack>();
         }
 
         // Update is called once per frame
@@ -31,13 +33,9 @@ namespace Enemy
         {
             if (player != null)
             {
-                if (canAttack())
+                if (!isOnCooldown())
                 {
-                    var died = attackPlayer();
-                    if (died)
-                    {
-                        player = null;
-                    }
+                   attackPlayer();
                 }
                 else
                 {
@@ -50,20 +48,9 @@ namespace Enemy
         {
             nextTimeToAttack = Time.time + _globalCooldown;
             _movement.StopMoving();
-            return _attack.Attack(_playerAttackable);
+            return _primaryAttack.Attack(_playerAttackable);
         }
-
-        bool canAttack()
-        {
-            return !isOnCooldown() && isInRangeToAttack();
-        }
-
-        bool isInRangeToAttack()
-        {
-            var distance = Vector3.Distance(transform.position, player.transform.position);
-            return distance <= attackRange;
-        }
-
+        
         bool isOnCooldown()
         {
             if (nextTimeToAttack == null)
@@ -76,7 +63,7 @@ namespace Enemy
 
         void moveIfNotInRange()
         {
-            if (isInRangeToAttack())
+            if (AttackUtil.IsInRageToAttack(attackRange, transform.position, player.transform.position))
             {
                 return;
             }

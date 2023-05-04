@@ -10,9 +10,9 @@ namespace DefaultNamespace
         {
             _hpController = GetComponent<IHpController>();
         }
-        public bool Attack(int damage)
+        public void Attack(int damage)
         {
-            return _hpController.Damage(damage);
+            _hpController.Damage(damage);
         }
 
         public Vector3 GetPosition()

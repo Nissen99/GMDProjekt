@@ -4,6 +4,6 @@
     {
         public int MaxHp { get; set; }
         public int CurrentHp { get; set; }
-        bool Damage(int amount);
+        void Damage(int amount);
     }
 }

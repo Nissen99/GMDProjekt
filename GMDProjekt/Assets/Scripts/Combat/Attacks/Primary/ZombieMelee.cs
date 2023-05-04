@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Combat.Attacks;
 using DefaultNamespace;
 using UnityEngine;
 
-public class ZombieMelee : MonoBehaviour, IAttack
+public class ZombieMelee : MonoBehaviour, IPrimaryAttack
 {
     public int BaseDamage { get; } = 10;
     public int Range { get; } = 2;
@@ -24,7 +25,12 @@ public class ZombieMelee : MonoBehaviour, IAttack
 
     public bool Attack(IAttackable toAttack)
     {
+        if (!AttackUtil.IsInRageToAttack(Range, transform.position, toAttack.GetPosition()))
+        {
+            return false;
+        }
         _animator.Play("InvigoratingStrike");
-        return toAttack.Attack(BaseDamage);
+        toAttack.Attack(BaseDamage);
+        return true;
     }
 }

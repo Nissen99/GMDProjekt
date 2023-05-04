@@ -57,6 +57,35 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
         }
     }
 
+    void OnSecondary(InputValue value)
+    {
+        var hit = actionTaken();
+        if (hit == null)
+        {
+            return;
+        }
+
+        if (hit.Value.transform.CompareTag(TAGS.GROUND_TAG))
+        {
+            _attackManager.SecondaryAttack(hit.Value.transform.position);
+        } else if (hit.Value.transform.CompareTag(TAGS.ENEMY_TAG))
+        {
+            _attackManager.SecondaryAttack(hit.Value.transform.position, hit.Value.transform.GetComponent<IAttackable>());
+        }
+    }
+
+    private RaycastHit? actionTaken()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            return hit;
+        }
+
+        return null;
+    }
+
 
 
     void resetIntent()

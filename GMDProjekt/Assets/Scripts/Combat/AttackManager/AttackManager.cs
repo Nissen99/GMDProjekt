@@ -1,6 +1,8 @@
 ﻿using System;
 using Combat.Attacks;
 using DefaultNamespace;
+using Spells;
+using TMPro;
 using UnityEngine;
 
 namespace Combat.AttackManager
@@ -15,14 +17,16 @@ namespace Combat.AttackManager
 
 
         private IMovement _movement;
-        private IAttack _primaryAttack;
+        private IPrimaryAttack _primaryPrimaryAttack;
+        private ISecondary _secondaryAttack;
         
         [SerializeField] private float _globalCooldown = 2f;
 
         private float? nextTimeToAttack;
         void Start()
         {
-            _primaryAttack = GetComponent<InvigoratingStrike>();
+            _primaryPrimaryAttack = GetComponent<IPrimaryAttack>();
+            _secondaryAttack = GetComponent<ISecondary>();
             _movement = GetComponent<IMovement>();
         }
 
@@ -37,37 +41,46 @@ namespace Combat.AttackManager
 
         public void PrimaryAttack(IAttackable toAttack)
         {
-            var positionOfToAttack = toAttack.GetPosition();
-            if (canAttack(_primaryAttack.Range, positionOfToAttack))
+            var performedAttack = false;
+            if (!isOnCooldown())
             {
-                _toPrimaryAttack = null;
-                _movement.StopMoving();
-               var died = _primaryAttack.Attack(toAttack);
-               nextTimeToAttack = Time.time + _globalCooldown;
-               if (died)
-               {
-                   _toPrimaryAttack = null;
-               }
+                performedAttack = _primaryPrimaryAttack.Attack(toAttack);
+            }
+            if (performedAttack)
+            {
+                attacked();
             }
             else
             {
-                moveIfNotInRange(_primaryAttack.Range, positionOfToAttack);
+                moveIfNotInRange(_primaryPrimaryAttack.Range, toAttack.GetPosition());
                 _toPrimaryAttack = toAttack;
             }
         }
+        
 
         public void StopPrimaryAttackIntent()
         {
             _toPrimaryAttack = null;
         }
 
-        bool canAttack(int attackRange, Vector3 toAttackPosition)
+        public void SecondaryAttack(Vector3? positionOfHit, IAttackable toAttack = null)
         {
-            return !isOnCooldown() && isInRangeToAttack(attackRange, toAttackPosition);
-            
+            if (!isOnCooldown())
+            {
+                var performedAttack = _secondaryAttack.Cast(positionOfHit, toAttack);
+                if (performedAttack)
+                {
+                    attacked();
+                }
+            }
         }
-        
 
+
+        void attacked()
+        {
+            _movement.StopMoving();
+            nextTimeToAttack = Time.time + _globalCooldown; 
+        }
         bool isInRangeToAttack(int attackRange, Vector3 toAttackPosition)
         {
             var distanceToAttack = Vector3.Distance(transform.position, toAttackPosition);

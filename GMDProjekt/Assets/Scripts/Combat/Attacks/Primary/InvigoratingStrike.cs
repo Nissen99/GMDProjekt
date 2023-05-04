@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Combat.Attacks
 {
-    public class InvigoratingStrike : MonoBehaviour, IAttack
+    public class InvigoratingStrike : MonoBehaviour, IPrimaryAttack
     {
         public int BaseDamage { get; } = 20;
         public int Range { get; } = 2;
@@ -17,8 +17,13 @@ namespace Combat.Attacks
 
         public bool Attack(IAttackable toAttack)
         {
+            if (!AttackUtil.IsInRageToAttack(Range, transform.position, toAttack.GetPosition()))
+            {
+                return false;
+            }
             _animator.Play("InvigoratingStrike");
-            return toAttack.Attack(BaseDamage);
+            toAttack.Attack(BaseDamage);
+            return true;
         }
     
     }

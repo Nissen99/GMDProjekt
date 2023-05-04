@@ -4,7 +4,7 @@ namespace DefaultNamespace
 {
     public interface IAttackable
     {
-        bool Attack(int damage);
+        void Attack(int damage);
         Vector3 GetPosition();
         bool IsAlive();
     }

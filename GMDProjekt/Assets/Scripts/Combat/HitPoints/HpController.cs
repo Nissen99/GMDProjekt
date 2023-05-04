@@ -31,16 +31,13 @@ public class HpController : MonoBehaviour, IHpController
     {
         
     } 
-    public bool Damage(int amount)
+    public void Damage(int amount)
     {
         currentHp -= amount;
         if (currentHp <= 0)
         {
             Die();
-            return true;
         }
-
-        return false;
     }
 
     private void Die()

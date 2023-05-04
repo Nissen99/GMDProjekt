@@ -1,13 +1,13 @@
-﻿using Palmmedia.ReportGenerator.Core.Parser;
+﻿using DefaultNamespace;
 
-namespace DefaultNamespace
+namespace Combat.Attacks
 {
     public interface IAttack
     {
-        public int BaseDamage { get; }
         public int Range { get; }
-        public float Cooldown { get;  }
+        /*
+         * Will return weather or not the attack started.
+         */
         bool Attack(IAttackable toAttack);
-        
     }
 }
