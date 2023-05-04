@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
@@ -5,11 +6,12 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour, IMovement
 {
-    private Vector3 _movementIntent;
     private Animator _animator;
+    private Vector3 _placeToMoveTo;
     [SerializeField] private int speed;
     [SerializeField] private int rotationSpeed;
     private static readonly int animatorSpeed = Animator.StringToHash("Speed");
+    private float _acceptedErrorMargin = 0.1f;
 
     private void Awake()
     {
@@ -21,43 +23,41 @@ public class Movement : MonoBehaviour, IMovement
     {
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
-        if (_movementIntent != new Vector3(0, 0, 0))
-        {      
-            var rotation = Quaternion.LookRotation(_movementIntent);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        if (!CheckEqualWithinErrorMargin(_placeToMoveTo, transform.position, _acceptedErrorMargin))
+        {       
+            var movementIntent = _placeToMoveTo - transform.position;
+            movementIntent.y = 0;
+            LookAt(_placeToMoveTo);
             transform.Translate(Vector3.forward * (speed * Time.deltaTime));
-            _animator.SetFloat(animatorSpeed, _movementIntent.magnitude);
+            _animator.SetFloat(animatorSpeed, movementIntent.magnitude); 
         }
         else
         {
             _animator.SetFloat(animatorSpeed, 0);
-        }
+        } 
     }
 
 
     public void Move(Vector3 placeToMove)
     {
-        float acceptedErrorMargin = 0.1f;
-
-
-        if (!CheckEqualWithinErrorMargin(placeToMove, transform.position, acceptedErrorMargin))
-        {
-            _movementIntent = placeToMove - transform.position;
-            _movementIntent.y = 0;
-        }
-        else
-        {
-            _movementIntent = new Vector3(0, 0, 0);
-        }
+        _placeToMoveTo = placeToMove;
     }
 
     public void StopMoving()
     {
-        _movementIntent = new Vector3(0, 0, 0);
+        _placeToMoveTo = transform.position;
     }
+
+    public void LookAt(Vector3 placeToLook)
+    { 
+        Vector3 direction = (placeToLook - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    }
+
     private bool CheckEqualWithinErrorMargin(Vector3 v1, Vector3 v2, float acceptedError)
     {
         if (Mathf.Abs(v1.x - v2.x) > acceptedError)

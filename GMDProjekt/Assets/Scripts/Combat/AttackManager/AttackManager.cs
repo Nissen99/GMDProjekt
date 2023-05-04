@@ -48,7 +48,7 @@ namespace Combat.AttackManager
             }
             if (performedAttack)
             {
-                attacked();
+                attacked(toAttack.GetPosition());
             }
             else
             {
@@ -59,7 +59,7 @@ namespace Combat.AttackManager
         
 
         public void StopPrimaryAttackIntent()
-        {
+        { 
             _toPrimaryAttack = null;
         }
 
@@ -70,15 +70,17 @@ namespace Combat.AttackManager
                 var performedAttack = _secondaryAttack.Cast(positionOfHit, toAttack);
                 if (performedAttack)
                 {
-                    attacked();
+                    attacked(toAttack.GetPosition());
                 }
             }
         }
 
 
-        void attacked()
+        void attacked(Vector3 positionOfAttacked)
         {
+            _toPrimaryAttack = null;
             _movement.StopMoving();
+            transform.LookAt(positionOfAttacked);
             nextTimeToAttack = Time.time + _globalCooldown; 
         }
         bool isInRangeToAttack(int attackRange, Vector3 toAttackPosition)

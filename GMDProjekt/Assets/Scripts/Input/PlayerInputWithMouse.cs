@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
 {
-    private Vector3? _latestMovementClick;
+    //private Vector3? _latestMovementClick;
     [SerializeField] private GameObject toSpawnWhenClicked;
     private delegate void ResetIntents();
 
@@ -28,10 +28,7 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
     // Update is called once per frame
     void Update()
     {
-        if (_latestMovementClick != null)
-        {
-           _movement.Move(_latestMovementClick.Value);
-        }
+
     }
 
     void OnPrimary(InputValue value)
@@ -44,8 +41,9 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
         {
             if (hit.transform.CompareTag(TAGS.GROUND_TAG))
             {
-                _latestMovementClick = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                Instantiate(toSpawnWhenClicked, new Vector3(hit.point.x, hit.point.y + 0.0f, hit.point.z), Quaternion.identity);
+               var _latestMovementClick = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+               _movement.Move(_latestMovementClick); 
+               Instantiate(toSpawnWhenClicked, new Vector3(hit.point.x, hit.point.y + 0.0f, hit.point.z), Quaternion.identity);
             } 
             
             if (hit.transform.CompareTag(TAGS.ENEMY_TAG))
@@ -90,7 +88,7 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
 
     void resetIntent()
     {
-        _latestMovementClick = null;
+      //  _latestMovementClick = null;
         _resetIntents = resetIntent;
     }
 }
