@@ -8,6 +8,6 @@ namespace Combat.AttackManager
     {
         void PrimaryAttack(IAttackable toAttack);
         void StopPrimaryAttackIntent();
-        void SecondaryAttack(Vector3? positionOfHit, [CanBeNull] IAttackable toAttack = null);
+        void SecondaryAttack(IAttackable toAttack);
     }
 }

@@ -62,13 +62,9 @@ public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
         {
             return;
         }
-
-        if (hit.Value.transform.CompareTag(TAGS.GROUND_TAG))
+        if (hit.Value.transform.CompareTag(TAGS.ENEMY_TAG))
         {
-            _attackManager.SecondaryAttack(hit.Value.transform.position);
-        } else if (hit.Value.transform.CompareTag(TAGS.ENEMY_TAG))
-        {
-            _attackManager.SecondaryAttack(hit.Value.transform.position, hit.Value.transform.GetComponent<IAttackable>());
+            _attackManager.SecondaryAttack(hit.Value.transform.GetComponent<IAttackable>());
         }
     }
 

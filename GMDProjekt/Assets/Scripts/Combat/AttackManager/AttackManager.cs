@@ -63,11 +63,11 @@ namespace Combat.AttackManager
             _toPrimaryAttack = null;
         }
 
-        public void SecondaryAttack(Vector3? positionOfHit, IAttackable toAttack = null)
+        public void SecondaryAttack(IAttackable toAttack )
         {
             if (!isOnCooldown())
             {
-                var performedAttack = _secondaryAttack.Cast(positionOfHit, toAttack);
+                var performedAttack = _secondaryAttack.Attack(toAttack);
                 if (performedAttack)
                 {
                     attacked(toAttack.GetPosition());

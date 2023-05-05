@@ -6,27 +6,25 @@ namespace Spells.Impale
 {
     public class Impale : MonoBehaviour, ISecondary
     {
-        public int Range { get; } = 15;
+        public int Range { get; } = 40;
+
         public int BaseDamge = 40;
         public float Cooldown { get; }
         public float TimeBeforeKnifeDespawns = (float)2.5;
         public float SpeedOfKnifes = 15;
+        public int AngleOfKnifes = 10;
 
         public ImpaleKnife ImpaleKnife;
-        public bool Cast(Vector3? positionToCast, IAttackable toAttack = null)
-        {
-            if (toAttack == null)
-            {
-                return false;
-            }
 
+        public bool Attack(IAttackable toAttack)
+        {
             var toAttackPosition = toAttack.GetPosition();
             if (AttackUtil.IsInRageToAttack(Range, transform.position, toAttackPosition))
             {
                 Vector3 direction = toAttackPosition - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(direction);
-                Quaternion leftRotation = Quaternion.AngleAxis(-15, Vector3.up) * rotation;
-                Quaternion rightRotation = Quaternion.AngleAxis(15, Vector3.up) * rotation;
+                Quaternion leftRotation = Quaternion.AngleAxis(-AngleOfKnifes, Vector3.up) * rotation;
+                Quaternion rightRotation = Quaternion.AngleAxis(AngleOfKnifes, Vector3.up) * rotation;
                 createKnife(rotation);
                 createKnife(leftRotation);
                 createKnife(rightRotation);
@@ -35,7 +33,6 @@ namespace Spells.Impale
 
             return false;
         }
-
         //Setting the Damage and Speed of knifes on Impale rather than the prefab, as that is what change the gameplay
         private void createKnife(Quaternion rotation)
         {
