@@ -9,8 +9,7 @@ namespace Combat.AttackManager
 {
     public class AttackManager : MonoBehaviour, IAttackManager
     {
-
-
+        
         private IAttackable _toPrimaryAttack;
         
         private bool _isAttacking;

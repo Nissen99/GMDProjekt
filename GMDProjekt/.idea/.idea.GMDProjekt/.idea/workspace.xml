@@ -5,24 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95c779d5-84d7-46e3-9b04-8958e2309420" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/ISecondary.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Spells.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Icons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Icons/ImpaleIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Icons/ImpaleIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Icons/InvigoratingStrikeIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Icons/InvigoratingStrikeIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/1200px-Airport_Rail_Link_Deep_Red.svg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/1200px-Airport_Rail_Link_Deep_Red.svg.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/circle-outline-blank-png-icon-download-16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/circle-outline-blank-png-icon-download-16.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/HealthChangedEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/HealthChangedEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIAbilityController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIAbilityController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIHealthController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIHealthController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/AttackManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/AttackManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/IAttackManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/IAttackManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInputWithMouse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInputWithMouse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/ISpell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Spells/ISpell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/ISpell.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Spells/ISpell.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary/ISecondary.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary/ISecondary.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/ISecondary.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary/Impale.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary/Impale/Impale.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/Impale.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary/Impale/Impale.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/Impale.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary/Impale/ImpaleKnife.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/ImpaleKnife.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spells/Secondary/Impale/ImpaleKnife.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/ImpaleKnife.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthBarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HpController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +35,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Camera/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/ISecondary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/Impale.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthBarController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -63,8 +65,8 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
       "C:\\Users\\mikke\\AppData\\Local\\Symbols\\src"
     ]
   }
@@ -131,6 +133,7 @@
       <workItem from="1680960622354" duration="2914000" />
       <workItem from="1683187067532" duration="9837000" />
       <workItem from="1683208270175" duration="1767000" />
+      <workItem from="1683318174767" duration="3220000" />
     </task>
     <servers />
   </component>

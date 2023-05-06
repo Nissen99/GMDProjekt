@@ -1,4 +1,5 @@
 using DefaultNamespace;
+using Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ namespace Combat.HitPoints
         [SerializeField] private GameObject healthBarUI;
 
         [SerializeField] private Slider  healthPercentage;
+
         // Start is called before the first frame update
         void Start()
         {
