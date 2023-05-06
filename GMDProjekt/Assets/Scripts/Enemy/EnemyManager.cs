@@ -13,7 +13,7 @@ namespace Enemy
         private IAttackable _playerAttackable;
         private IMovement _movement;
 
-        private IPrimaryAttack _primaryAttack;
+        private IAttack _primaryAttack;
 
         [SerializeField] private float _globalCooldown = 2f;
 
@@ -25,7 +25,7 @@ namespace Enemy
             player = GameObject.FindGameObjectWithTag("Player");
             _playerAttackable = player.GetComponent<IAttackable>();
             _movement = GetComponent<IMovement>();
-            _primaryAttack = GetComponent<IPrimaryAttack>();
+            _primaryAttack = GetComponent<IAttack>();
         }
 
         // Update is called once per frame
@@ -46,6 +46,10 @@ namespace Enemy
 
         bool attackPlayer()
         {
+            if (!_playerAttackable.IsAlive())
+            {
+                return false;
+            }
             nextTimeToAttack = Time.time + _globalCooldown;
             _movement.StopMoving();
             return _primaryAttack.Attack(_playerAttackable);

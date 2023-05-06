@@ -5,5 +5,6 @@
         public int MaxHp { get; set; }
         public int CurrentHp { get; set; }
         void Damage(int amount);
+        void Heal(int amount);
     }
 }

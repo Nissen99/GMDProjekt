@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffaa96f823c44de8bde99ebcbee46478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
+  HitSoundName: ImpaleHit

@@ -7,7 +7,8 @@ namespace Spells
     public class ImpaleKnife : MonoBehaviour
     {
         private int _damage;
-        public float _speed;
+        private float _speed;
+        public string HitSoundName;
 
         private void Update()
         {
@@ -20,6 +21,7 @@ namespace Spells
             {
                 var enemyHit = other.gameObject.GetComponent<IAttackable>();
                 enemyHit.Attack(_damage);
+                FindObjectOfType<AudioManager>().Play(HitSoundName);
             }
 
             Destroy(gameObject);

@@ -1,91 +1,98 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Combat.AttackManager;
+using Combat.HitPoints;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputWithMouse : MonoBehaviour, IPlayerInput
+namespace Input
 {
-    //private Vector3? _latestMovementClick;
-    [SerializeField] private GameObject toSpawnWhenClicked;
-    private delegate void ResetIntents();
+    public class PlayerInputWithMouse : MonoBehaviour
+    {
+        //private Vector3? _latestMovementClick;
+        [SerializeField] private GameObject toSpawnWhenClicked;
+        private delegate void ResetIntents();
 
-    private IMovement _movement;
-    private IAttackManager _attackManager;
+        private IMovement _movement;
+        private IAttackManager _attackManager;
+        private IHealthPotion _healthPotion;
     
-    private ResetIntents _resetIntents;
-    // Start is called before the first frame update
-    void Start()
-    {
-        _movement = GetComponent<IMovement>();
-        _attackManager = GetComponent<IAttackManager>();
-
-        _resetIntents = resetIntent;
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnPrimary(InputValue value)
-    {
-        _resetIntents.Invoke();
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        private ResetIntents _resetIntents;
+        // Start is called before the first frame update
+        void Start()
         {
-            if (hit.transform.CompareTag(TAGS.GROUND_TAG))
+            _movement = GetComponent<IMovement>();
+            _attackManager = GetComponent<IAttackManager>();
+            _healthPotion = GetComponent<IHealthPotion>();
+            _resetIntents = resetIntent;
+        }
+    
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        void OnPrimary(InputValue value)
+        {
+            _resetIntents.Invoke();
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
             {
-               var _latestMovementClick = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-               _movement.Move(_latestMovementClick); 
-               Instantiate(toSpawnWhenClicked, new Vector3(hit.point.x, hit.point.y + 0.0f, hit.point.z), Quaternion.identity);
-            } 
+                if (hit.transform.CompareTag(TAGS.GROUND_TAG))
+                {
+                    var _latestMovementClick = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                    _movement.Move(_latestMovementClick); 
+                    Instantiate(toSpawnWhenClicked, new Vector3(hit.point.x, hit.point.y + 0.0f, hit.point.z), Quaternion.identity);
+                } 
             
-            if (hit.transform.CompareTag(TAGS.ENEMY_TAG))
-            {
-                var enemy = hit.transform.GetComponent<IAttackable>();
-                _attackManager.PrimaryAttack(enemy);
-                _resetIntents += _attackManager.StopPrimaryAttackIntent;
+                if (hit.transform.CompareTag(TAGS.ENEMY_TAG))
+                {
+                    var enemy = hit.transform.GetComponent<IAttackable>();
+                    _attackManager.PrimaryAttack(enemy);
+                    _resetIntents += _attackManager.StopPrimaryAttackIntent;
+                }
             }
         }
-    }
 
-    void OnSecondary(InputValue value)
-    {
-        var hit = actionTaken();
-        if (hit == null)
+        void OnSecondary(InputValue value)
         {
-            return;
-        }
-        if (hit.Value.transform.CompareTag(TAGS.ENEMY_TAG))
-        {
-            _attackManager.SecondaryAttack(hit.Value.transform.GetComponent<IAttackable>());
-        }
-    }
-
-    private RaycastHit? actionTaken()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            return hit;
+            var hit = actionTaken();
+            if (hit == null)
+            {
+                return;
+            }
+            if (hit.Value.transform.CompareTag(TAGS.ENEMY_TAG))
+            {
+                _attackManager.SecondaryAttack(hit.Value.transform.GetComponent<IAttackable>());
+            }
         }
 
-        return null;
-    }
+        void OnPotion(InputValue value)
+        {
+            _healthPotion.Use();
+        }
+
+        private RaycastHit? actionTaken()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                return hit;
+            }
+
+            return null;
+        }
 
 
 
-    void resetIntent()
-    {
-      //  _latestMovementClick = null;
-        _resetIntents = resetIntent;
+        void resetIntent()
+        {
+            //  _latestMovementClick = null;
+            _resetIntents = resetIntent;
+        }
     }
 }
 

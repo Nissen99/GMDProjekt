@@ -14,12 +14,12 @@ namespace Combat.AttackManager
         
         private bool _isAttacking;
 
-
+        private IResourceManager _resourceManager;
         private IMovement _movement;
         private IPrimaryAttack _primaryPrimaryAttack;
         private ISecondary _secondaryAttack;
         
-        [SerializeField] private float _globalCooldown = 2f;
+        [SerializeField] private float _globalCooldown = 1f;
 
         private float? nextTimeToAttack;
         void Start()
@@ -27,6 +27,7 @@ namespace Combat.AttackManager
             _primaryPrimaryAttack = GetComponent<IPrimaryAttack>();
             _secondaryAttack = GetComponent<ISecondary>();
             _movement = GetComponent<IMovement>();
+            _resourceManager = GetComponent<IResourceManager>();
         }
 
         private void FixedUpdate()
@@ -41,17 +42,17 @@ namespace Combat.AttackManager
         public void PrimaryAttack(IAttackable toAttack)
         {
             var performedAttack = false;
-            if (!isOnCooldown())
+            if (canAttack(toAttack.IsAlive()))
             {
                 performedAttack = _primaryPrimaryAttack.Attack(toAttack);
             }
             if (performedAttack)
             {
-                attacked(toAttack.GetPosition());
+                attacked(toAttack.GetPosition(), _primaryPrimaryAttack.GetResourceGeneratedPerAttack(), false);
             }
             else
             {
-                moveIfNotInRange(_primaryPrimaryAttack.Range, toAttack.GetPosition());
+                moveIfNotInRange(_primaryPrimaryAttack.GetRange(), toAttack.GetPosition());
                 _toPrimaryAttack = toAttack;
             }
         }
@@ -64,28 +65,42 @@ namespace Combat.AttackManager
 
         public void SecondaryAttack(IAttackable toAttack )
         {
-            if (!isOnCooldown())
+            if (canAttack(toAttack.IsAlive(),_secondaryAttack.GetCostOfAttack()))
             {
                 var performedAttack = _secondaryAttack.Attack(toAttack);
                 if (performedAttack)
                 {
-                    attacked(toAttack.GetPosition());
+                    attacked(toAttack.GetPosition(), _secondaryAttack.GetCostOfAttack(), true);
                 }
             }
         }
 
 
-        void attacked(Vector3 positionOfAttacked)
+        void attacked(Vector3 positionOfAttacked, int amountOfResource, bool spentResource)
         {
             _toPrimaryAttack = null;
             _movement.StopMoving();
             transform.LookAt(positionOfAttacked);
-            nextTimeToAttack = Time.time + _globalCooldown; 
+            nextTimeToAttack = Time.time + _globalCooldown;
+            if (spentResource)
+            {
+                _resourceManager.Spend(amountOfResource);
+            }
+            else
+            {
+                _resourceManager.Generate(amountOfResource);
+            }
         }
         bool isInRangeToAttack(int attackRange, Vector3 toAttackPosition)
         {
             var distanceToAttack = Vector3.Distance(transform.position, toAttackPosition);
             return distanceToAttack <= attackRange;
+        }
+
+        bool canAttack( bool toAttackIsAlive, int amountOfResourceForAttack = 0)
+        {
+            return !isOnCooldown() && _resourceManager.HasEnough(amountOfResourceForAttack);
+
         }
 
         bool isOnCooldown()

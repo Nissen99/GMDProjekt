@@ -5,28 +5,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95c779d5-84d7-46e3-9b04-8958e2309420" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Icons.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Icons/ImpaleIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Icons/ImpaleIcon.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Icons/InvigoratingStrikeIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Icons/InvigoratingStrikeIcon.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Input/1200px-Airport_Rail_Link_Deep_Red.svg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Input/1200px-Airport_Rail_Link_Deep_Red.svg.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Input/circle-outline-blank-png-icon-download-16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Input/circle-outline-blank-png-icon-download-16.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/HealthChangedEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/HealthChangedEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIAbilityController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIAbilityController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIHealthController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIHealthController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Icons/Potion 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Icons/Potion 1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/1200px-Airport_Rail_Link_Deep_Red.svg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/1200px-Airport_Rail_Link_Deep_Red.svg.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/EnergyColor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/EnergyColor.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/circle-outline-blank-png-icon-download-16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/circle-outline-blank-png-icon-download-16.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/IResourceManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/IResourceManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/ResourceManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/ResourceManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthPotion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthPotion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/IHealthPotion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/IHealthPotion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/ResourceChangedEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/ResourceChangedEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/SpellUsed.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/SpellUsed.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sound.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/AUDIOCLIPS.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/AUDIOCLIPS.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/AudioManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/AudioManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/Sound.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/Sound.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIPotion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIPotion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UiResourceController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UiResourceController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/CooldownManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/CooldownManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/ICooldownManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/ICooldownManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/Percentage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Util/Percentage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/ImapleKnifeHitEnemy.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/ImapleKnifeHitEnemy.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/Impale.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/Impale.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/InvigoratingStike.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/InvigoratingStike.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/PlayerDeathSound.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/PlayerDeathSound.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/ZombieDeath.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/ZombieDeath.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/ZombieStrike.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/ZombieStrike.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/birthofahero.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/SoundClips/birthofahero.mp3.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMDProjekt/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Character/Animations/AnimatorControllers/CharacterAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Character/Animations/AnimatorControllers/CharacterAnimatorController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/1200px-Airport_Rail_Link_Deep_Red.svg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/1200px-Airport_Rail_Link_Deep_Red.svg.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/PlayerInputMouseMovement.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/PlayerInputMouseMovement.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/circle-outline-blank-png-icon-download-16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/circle-outline-blank-png-icon-download-16.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ImpaleKnife.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ImpaleKnife.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/AttackManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/AttackManager/AttackManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthBarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attackable/Attackable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attackable/Attackable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/IAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/IAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Primary/IPrimaryAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Primary/IPrimaryAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Primary/InvigoratingStrike.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Primary/InvigoratingStrike.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Primary/ZombieMelee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Primary/ZombieMelee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/ISecondary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/ISecondary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/Impale.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/Impale.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/ImpaleKnife.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacks/Secondary/Impale/ImpaleKnife.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HpController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/IHpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/IHpController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/IPlayerInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/IPlayerInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInputWithMouse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInputWithMouse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIAbilityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIAbilityController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +91,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Camera/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthBarController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/HitPoints/HealthPotion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sound/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,28 +106,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.general",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\mikke\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\mikke\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\mikke\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.22f1\Editor\Unity.exe" />
@@ -134,6 +191,7 @@
       <workItem from="1683187067532" duration="9837000" />
       <workItem from="1683208270175" duration="1767000" />
       <workItem from="1683318174767" duration="3220000" />
+      <workItem from="1683373668290" duration="13537000" />
     </task>
     <servers />
   </component>

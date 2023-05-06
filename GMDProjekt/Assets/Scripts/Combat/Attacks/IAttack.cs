@@ -3,8 +3,7 @@
 namespace Combat.Attacks
 {
     public interface IAttack
-    {
-        public int Range { get; }
+    { int GetRange();
         /*
          * Will return weather or not the attack started.
          */

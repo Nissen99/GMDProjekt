@@ -22,7 +22,7 @@ namespace DefaultNamespace
 
         public bool IsAlive()
         {
-            return transform != null;
+            return gameObject.active;
         }
     }
 }

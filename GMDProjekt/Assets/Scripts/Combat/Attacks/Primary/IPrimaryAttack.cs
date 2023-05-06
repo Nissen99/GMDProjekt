@@ -4,7 +4,6 @@ namespace Combat.Attacks
 {
     public interface IPrimaryAttack : IAttack
     {
-     
-        
+        int GetResourceGeneratedPerAttack();
     }
 }

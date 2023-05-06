@@ -11,6 +11,7 @@ public class HpController : MonoBehaviour, IHpController
 
    [SerializeField] private int currentHp;
    public HealthChangedEvent onHealthChange;
+   public string DeathSoundClipName;
 
    //Unity does not allow me to show properties in the inspector, so had to do this work around :shrug: 
    public int MaxHp
@@ -37,23 +38,37 @@ public class HpController : MonoBehaviour, IHpController
         currentHp = maxHp;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    } 
+
     public void Damage(int amount)
     {
+        var dead = false;
         currentHp -= amount;
-        onHealthChange.Invoke(currentHp, maxHp);
         if (currentHp <= 0)
+        {
+            dead = true;
+            currentHp = 0;
+        }
+        onHealthChange.Invoke(currentHp, maxHp);
+        if (dead)
         {
             Die();
         }
     }
 
+    public void Heal(int amount)
+    {
+        currentHp += amount;
+        if (currentHp > maxHp)
+        {
+            currentHp = maxHp;
+        }
+        onHealthChange.Invoke(currentHp, maxHp);
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
     private void Die()
     {
+        FindObjectOfType<AudioManager>().Play(DeathSoundClipName);
         gameObject.SetActive(false);
     }
     

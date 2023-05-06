@@ -4,11 +4,11 @@ using Combat.Attacks;
 using DefaultNamespace;
 using UnityEngine;
 
-public class ZombieMelee : MonoBehaviour, IPrimaryAttack
+public class ZombieMelee : MonoBehaviour, IAttack
 {
-    public int BaseDamage { get; } = 10;
-    public int Range { get; } = 2;
-    public float Cooldown { get; } = 0f;
+    public int BaseDamage = 10;
+    public int Range = 2;
+    public string AttackClipName;
     private Animator _animator;
 
     // Start is called before the first frame update
@@ -23,6 +23,11 @@ public class ZombieMelee : MonoBehaviour, IPrimaryAttack
         
     }
 
+    public int GetRange()
+    {
+        return Range;
+    }
+
     public bool Attack(IAttackable toAttack)
     {
         if (!AttackUtil.IsInRageToAttack(Range, transform.position, toAttack.GetPosition()))
@@ -31,6 +36,8 @@ public class ZombieMelee : MonoBehaviour, IPrimaryAttack
         }
         _animator.Play("InvigoratingStrike");
         toAttack.Attack(BaseDamage);
+        FindObjectOfType<AudioManager>().Play(AttackClipName);
         return true;
     }
+    
 }
