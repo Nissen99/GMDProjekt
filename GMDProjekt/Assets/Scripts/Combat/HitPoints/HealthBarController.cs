@@ -24,14 +24,14 @@ namespace Combat.HitPoints
         // Update is called once per frame
         void Update()
         {
-            if (_hpController.MaxHp == _hpController.CurrentHp)
+            if (_hpController.GetMaxHealth() == _hpController.GetCurrentHealth())
             {
                 return;
             }
         
             healthBarUI.SetActive(true);
         
-            setHealthPercentage(_hpController.MaxHp, _hpController.CurrentHp);
+            setHealthPercentage(_hpController.GetMaxHealth(), _hpController.GetCurrentHealth());
         }
         
 

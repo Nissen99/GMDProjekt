@@ -52,7 +52,7 @@ namespace Spells.Impale
                 new Vector3(transform.position.x, (float)0.5, transform.position.z), rotation);
             knife.SetAttack(BaseDamge);
             knife.SetSpeed(SpeedOfKnifes);
-            Destroy(knife, TimeBeforeKnifeDespawns);
+            Destroy(knife.gameObject, TimeBeforeKnifeDespawns);
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Enemy
 {
     public class EnemyManager : MonoBehaviour
     {
-        [SerializeField] private int attackRange = 2;
         [CanBeNull] private GameObject player;
         private IAttackable _playerAttackable;
         private IMovement _movement;
@@ -35,12 +34,9 @@ namespace Enemy
             {
                 if (!isOnCooldown())
                 {
-                   attackPlayer();
+                    attackPlayer();
                 }
-                else
-                {
-                    moveIfNotInRange();
-                }
+                moveIfNotInRange();
             }
         }
 
@@ -50,11 +46,12 @@ namespace Enemy
             {
                 return false;
             }
+
             nextTimeToAttack = Time.time + _globalCooldown;
             _movement.StopMoving();
             return _primaryAttack.Attack(_playerAttackable);
         }
-        
+
         bool isOnCooldown()
         {
             if (nextTimeToAttack == null)
@@ -67,12 +64,11 @@ namespace Enemy
 
         void moveIfNotInRange()
         {
-            if (AttackUtil.IsInRageToAttack(attackRange, transform.position, player.transform.position))
+            var distanceToAttack = Vector3.Distance(transform.position, _playerAttackable.GetPosition());
+            if (distanceToAttack >= _primaryAttack.GetRange())
             {
-                return;
+                _movement.Move(player.transform.position);
             }
-
-            _movement.Move(player.transform.position);
         }
     }
 }

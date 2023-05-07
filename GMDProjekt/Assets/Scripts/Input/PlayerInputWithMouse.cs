@@ -42,10 +42,19 @@ namespace Input
             {
                 if (hit.transform.CompareTag(TAGS.GROUND_TAG))
                 {
-                    var _latestMovementClick = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                    _movement.Move(_latestMovementClick); 
+                    MovePlayer(hit.point);
                     Instantiate(toSpawnWhenClicked, new Vector3(hit.point.x, hit.point.y + 0.0f, hit.point.z), Quaternion.identity);
                 } 
+                
+                if (hit.transform.CompareTag(TAGS.WALL_TAG))
+                {
+                    // hit a wall, find the floor position behind the wall
+                    if (Physics.Raycast(hit.point, ray.direction , out RaycastHit floorHit))
+                    {
+                        MovePlayer(floorHit.point);
+                        Instantiate(toSpawnWhenClicked, new Vector3(floorHit.point.x, floorHit.point.y + 0.0f, floorHit.point.z), Quaternion.identity);
+                    }
+                }
             
                 if (hit.transform.CompareTag(TAGS.ENEMY_TAG))
                 {
@@ -86,7 +95,11 @@ namespace Input
             return null;
         }
 
-
+        void MovePlayer(Vector3 targetPosition)
+        {
+            var _latestMovementClick = new Vector3(targetPosition.x, 0, targetPosition.z);
+            _movement.Move(_latestMovementClick); 
+        }
 
         void resetIntent()
         {

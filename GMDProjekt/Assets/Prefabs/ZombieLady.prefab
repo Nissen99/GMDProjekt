@@ -2706,7 +2706,6 @@ GameObject:
   - component: {fileID: 664606065309395707}
   - component: {fileID: 664606065309395650}
   - component: {fileID: 664606065309395709}
-  - component: {fileID: 664606065309395651}
   - component: {fileID: 664606065309395648}
   m_Layer: 0
   m_Name: ZombieLady
@@ -2797,6 +2796,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
+  DeathSoundClipName: 
+  ShouldScaleWithDifficulty: 0
 --- !u!114 &664606065309395707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,20 +2836,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d76ad158bd28b4faaeff9403479af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &664606065309395651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664606065309395706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2b162b0a562e4498d49d97b3575849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  rotationSpeed: 15
+  BaseDamage: 10
+  Range: 2
+  AttackClipName: 
 --- !u!114 &664606065309395648
 MonoBehaviour:
   m_ObjectHideFlags: 0

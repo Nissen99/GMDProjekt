@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+
     private void Awake()
     {
         if (instance == null)
@@ -20,6 +21,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         foreach (var sound in sounds)
         {
             sound.Source = gameObject.AddComponent<AudioSource>();
@@ -27,8 +29,10 @@ public class AudioManager : MonoBehaviour
             sound.Source.volume = sound.Volume;
             sound.Source.pitch = sound.Pitch;
             sound.Source.loop = sound.Loop;
-
         }
+
+        var masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        SetMasterVolume(masterVolume);
     }
 
     private void Start()
@@ -38,13 +42,21 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string nameOfSoundToPlay)
     {
-        var soundToPlay =Array.Find(sounds, sound => sound.Name == nameOfSoundToPlay);
+        var soundToPlay = Array.Find(sounds, sound => sound.Name == nameOfSoundToPlay);
         if (soundToPlay == null)
         {
             Debug.LogError($"Could not find sound: {nameOfSoundToPlay}");
             return;
         }
-        soundToPlay.Source.Play();
-    } 
-}
 
+        soundToPlay.Source.Play();
+    }
+
+    public void SetMasterVolume(float masterVolume)
+    {
+        foreach (var sound in sounds)
+        {
+            sound.Source.volume = masterVolume * sound.Volume;
+        }
+    }
+}

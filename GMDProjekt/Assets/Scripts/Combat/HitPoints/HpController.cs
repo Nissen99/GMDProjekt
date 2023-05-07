@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using Events;
 using UnityEngine;
+using Util;
 
 public class HpController : MonoBehaviour, IHpController
 {
@@ -12,18 +13,8 @@ public class HpController : MonoBehaviour, IHpController
    [SerializeField] private int currentHp;
    public HealthChangedEvent onHealthChange;
    public string DeathSoundClipName;
+   public bool ShouldScaleWithDifficulty;
 
-   //Unity does not allow me to show properties in the inspector, so had to do this work around :shrug: 
-   public int MaxHp
-   {
-       get { return maxHp; }
-       set { maxHp = value; }
-   }
-   public int CurrentHp
-   {
-       get { return currentHp; }
-       set { currentHp = value; }
-   }
 
    // I am using Awake because it is an event that other scripts will likely subscribe to in their start, so we need
    // to make sure this has happened before start.
@@ -35,6 +26,10 @@ public class HpController : MonoBehaviour, IHpController
    // Start is called before the first frame update
     void Start()
     {
+        if (ShouldScaleWithDifficulty)
+        {
+            scaleWithDifficulty();
+        }
         currentHp = maxHp;
     }
 
@@ -65,11 +60,26 @@ public class HpController : MonoBehaviour, IHpController
         onHealthChange.Invoke(currentHp, maxHp);
     }
 
+    public int GetMaxHealth()
+    {
+        return maxHp;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHp;
+    }
+
     // ReSharper disable Unity.PerformanceAnalysis
     private void Die()
     {
         FindObjectOfType<AudioManager>().Play(DeathSoundClipName);
         gameObject.SetActive(false);
     }
-    
+
+    private void scaleWithDifficulty()
+    {
+        var difficultyMultiplier = DifficultyManager.GetInstance().GetDifficultyMultiplier();
+        maxHp *= difficultyMultiplier;
+    }
 }

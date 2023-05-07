@@ -11,11 +11,11 @@ public class Movement : MonoBehaviour, IMovement
     [SerializeField] private int speed;
     [SerializeField] private int rotationSpeed;
     private static readonly int animatorSpeed = Animator.StringToHash("Speed");
-    private float _acceptedErrorMargin = 0.1f;
-
+    private Rigidbody _rigidbody;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     // Start is called before the first frame update
@@ -26,7 +26,9 @@ public class Movement : MonoBehaviour, IMovement
 
     void FixedUpdate()
     {
-        if (!CheckEqualWithinErrorMargin(_placeToMoveTo, transform.position, _acceptedErrorMargin))
+        
+        
+        if (!MovementUtil.CheckEqualWithinErrorMargin(_placeToMoveTo, transform.position))
         {       
             var movementIntent = _placeToMoveTo - transform.position;
             movementIntent.y = 0;
@@ -58,23 +60,5 @@ public class Movement : MonoBehaviour, IMovement
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
-    private bool CheckEqualWithinErrorMargin(Vector3 v1, Vector3 v2, float acceptedError)
-    {
-        if (Mathf.Abs(v1.x - v2.x) > acceptedError)
-        {
-            return false;
-        }
 
-        if (Mathf.Abs(v1.y - v2.y) > acceptedError)
-        {
-            return false;
-        }
-
-        if (Mathf.Abs(v1.z - v2.z) > acceptedError)
-        {
-            return false;
-        }
-
-        return true;
-    }
 }

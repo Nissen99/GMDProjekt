@@ -7,8 +7,9 @@ namespace Combat.HitPoints
 {
     public class HealthPotion : MonoBehaviour, IHealthPotion
     {
-        public int HealthGainedOnUse = 750;
+       [Range(0,1)] public float HealthProcentGainedOnUse = 0.65f;
         public float CooldownOnPotion = 15f;
+        private int _healthOnUse;
         private ICooldownManager _cooldownManager;
         private IHpController _hpController;
 
@@ -26,6 +27,7 @@ namespace Combat.HitPoints
         void Start()
         {
             _hpController = GetComponent<IHpController>();
+            _healthOnUse = (int)(HealthProcentGainedOnUse * _hpController.GetMaxHealth());
         }
         
 
@@ -35,7 +37,7 @@ namespace Combat.HitPoints
             {
                 return;   
             }
-            _hpController.Heal(HealthGainedOnUse);
+            _hpController.Heal(_healthOnUse);
             _cooldownManager.Use();
             onSpellUsed.Invoke();
         }
