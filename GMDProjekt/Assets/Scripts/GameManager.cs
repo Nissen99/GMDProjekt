@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private int _currentNumberOfElitesKilled;
     private UIQuestTextManager _questTextManager;
 
-    private const string _messageToTellPlayerWhenDoorBroken = "Door has been destroyed go face the boss";
+    private const string _messageToTellPlayerWhenDoorBroken = "The portal has been shattered. The path to the final confrontation lies open. Go forth and face the ultimate adversary";
 
     private void Start()
     {
@@ -66,8 +66,8 @@ public class GameManager : MonoBehaviour
 
     private void updateQuestNoFinished()
     {
-        changeQuestText($"To open the door and face LUCIFER, you need to slay his most Loyal minions \n" +
-                        $"Remaining: {NumberKilledElitesToEnter - _currentNumberOfElitesKilled}");
+        
+        changeQuestText($"To unlock the gateway to the infernal realm and confront the Prince of Darkness himself, you must vanquish his most devoted servants. {NumberKilledElitesToEnter - _currentNumberOfElitesKilled} remain standing in your path.");
     }
     
     IEnumerator FadeOut(bool  won)
