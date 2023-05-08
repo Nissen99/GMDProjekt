@@ -117,14 +117,16 @@ namespace Items
                 NameOfItem = Legendary_Item_Names.HOLY_POINT_SHOT,
                 MainStat = 15,
                 Vitality = 10,
-                Rarity = Rarity.Legendary
+                Rarity = Rarity.Legendary,
+                LegendaryEffect = "Impale throws two additional knives"
             });
             Bag.Add(new Item
             {
                 NameOfItem = Legendary_Item_Names.KARLEIS_POINT,
                 MainStat = 20,
                 Vitality = 11,
-                Rarity = Rarity.Legendary
+                Rarity = Rarity.Legendary,
+                LegendaryEffect = "Impale deals 3.75 times increased damage"
             });
         }
     }
