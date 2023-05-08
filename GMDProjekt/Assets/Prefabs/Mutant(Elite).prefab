@@ -1197,10 +1197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ac284be58b82947b358342720e0491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseDamage: 20
+  BaseDamage: 50
   Range: 3
-  AttackClipName: MutantMelee
-  ShouldScaleWithDifficulty: 1
+  AttackClipName: MutantPunch
+  ShouldScaleWithDifficulty: 0
 --- !u!195 &5651426602155043767
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533f3955684b4eb4a52f3654f3dda4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 15
+  rotationSpeed: 25
 --- !u!114 &5651426602155043769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,8 +1250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 2000
   currentHp: 0
-  DeathSoundClipName: MutantDeath
-  ShouldScaleWithDifficulty: 1
+  DeathSoundClipName: 
+  ShouldScaleWithDifficulty: 0
   IsPlayer: 0
 --- !u!114 &5651426602155043770
 MonoBehaviour:

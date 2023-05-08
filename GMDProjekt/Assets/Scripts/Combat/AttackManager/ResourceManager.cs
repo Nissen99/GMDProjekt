@@ -30,13 +30,7 @@ namespace Combat.AttackManager
 
         public bool HasEnough(int amount)
         {
-            if (currentResource >= amount)
-            {
-                return true;
-            }
-            
-            FindObjectOfType<AudioManager>().Play(AUDIOCLIPS.MORE_ENERGY_NEEDED);
-            return false;
+            return currentResource >= amount;
         }
 
         public void Spend(int amount)

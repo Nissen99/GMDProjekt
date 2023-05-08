@@ -1,22 +1,49 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
-public class ExplosionZone : MonoBehaviour
+namespace Combat.Attacks.Secondary.BossRoundKick
 {
-
-    private int _damage;
-
-
-    public Expolsion 
-
-    public void SetDamage(int dmg)
+    public class ExplosionZone : MonoBehaviour
     {
-        _damage = _damage;
-    }
+        public GameObject ExposionPartical;
+        private int _damage;
+        private List<GameObject> playersInZone = new List<GameObject>();
 
-    private void OnDestroy()
-    {
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag(TAGS.PLAYER))
+            {
+                playersInZone.Add(other.gameObject);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag(TAGS.PLAYER))
+            {
+                playersInZone.Remove(other.gameObject);
+            }
+        }
+
+
+        public void SetDamage(int damage)
+        {
+            _damage = damage;
+        }
+
+        private void OnDestroy()
+        {
+            Debug.Log("YSADSADASDDSADSA");
+
+            Debug.Log(playersInZone.Count);
+            Instantiate(ExposionPartical, transform.position, Quaternion.identity);
+            foreach (var player in playersInZone)
+            {
+                var attackable = player.GetComponent<IAttackable>();
+                attackable.Attack(_damage);
+            }
+        }
     }
 }

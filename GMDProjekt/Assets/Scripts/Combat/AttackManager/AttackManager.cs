@@ -99,7 +99,12 @@ namespace Combat.AttackManager
 
         bool canAttack( bool toAttackIsAlive, int amountOfResourceForAttack = 0)
         {
-            return !isOnCooldown() && _resourceManager.HasEnough(amountOfResourceForAttack);
+            if (!_resourceManager.HasEnough(amountOfResourceForAttack))
+            {
+                FindObjectOfType<AudioManager>().Play(AUDIOCLIPS.MORE_ENERGY_NEEDED);
+                return false;
+            }
+            return !isOnCooldown();
 
         }
 

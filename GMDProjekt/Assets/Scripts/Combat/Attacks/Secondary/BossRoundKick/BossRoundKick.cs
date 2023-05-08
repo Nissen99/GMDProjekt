@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Combat.Attacks;
+using Combat.Attacks.Secondary.BossRoundKick;
 using DefaultNamespace;
 using Spells;
 using UnityEngine;
@@ -45,12 +46,12 @@ public class BossRoundKick : MonoBehaviour, ISecondary
             {
                 return false;
             }
-            _animator.Play("BossRoundKick");
+           // _animator.Play("BossRoundKick");
             FindObjectOfType<AudioManager>().Play(AttackClipName);
 
             // Spawn in the cicle that explodes for damage
             var explosionZone = Instantiate(ExplosionZonePrefab, transform.position, Quaternion.identity);
-            
+            explosionZone.SetDamage(_damage);
             Destroy(explosionZone.gameObject, DelayBeforeExploding);
             return true;
         }

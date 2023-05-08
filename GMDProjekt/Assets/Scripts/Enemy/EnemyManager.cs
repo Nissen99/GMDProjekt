@@ -1,7 +1,9 @@
 ﻿using System;
+using Combat.AttackManager;
 using Combat.Attacks;
 using DefaultNamespace;
 using JetBrains.Annotations;
+using Spells;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -14,7 +16,8 @@ namespace Enemy
         [CanBeNull] private GameObject player;
         private IAttackable _playerAttackable;
         private IMovement _movement;
-
+        [CanBeNull] private ISecondary _secondaryAttack;
+        [CanBeNull] private IResourceManager _resourceManager;
         private IAttack _primaryAttack;
         public bool IsElite;
         public bool IsBoss;
@@ -30,6 +33,8 @@ namespace Enemy
             _playerAttackable = player.GetComponent<IAttackable>();
             _movement = GetComponent<IMovement>();
             _primaryAttack = GetComponent<IAttack>();
+            _secondaryAttack = GetComponent<ISecondary>();
+            _resourceManager = GetComponent<IResourceManager>();
             GetComponent<HpController>().onHealthChange.AddListener(ActionOnDeath);
         }
 
@@ -53,9 +58,35 @@ namespace Enemy
                 return false;
             }
 
+            if (_secondaryAttack != null && _resourceManager != null)
+            {
+                var performedSecondaryAttack = attackingSecondary();
+                if (performedSecondaryAttack)
+                {
+                    AfterAttack();
+                    return performedSecondaryAttack;
+                }
+            }
+
+            var performedAttack = _primaryAttack.Attack(_playerAttackable);
+            AfterAttack();
+            return performedAttack;
+        }
+
+        private void AfterAttack()
+        {
             nextTimeToAttack = Time.time + _globalCooldown;
             _movement.StopMoving();
-            return _primaryAttack.Attack(_playerAttackable);
+        }
+
+        bool attackingSecondary()
+        {
+            if (_resourceManager.HasEnough(_secondaryAttack.GetCostOfAttack()))
+            {
+                _resourceManager.Spend(_secondaryAttack.GetCostOfAttack());
+                return _secondaryAttack.Attack(_playerAttackable);
+            }
+            return false;
         }
 
         bool isOnCooldown()

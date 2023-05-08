@@ -13,6 +13,7 @@ public class BossMelee : MonoBehaviour, IPrimaryAttack
     public string AttackClipName;
     private Animator _animator;
     public bool ShouldScaleWithDifficulty;
+    public int ResourceGeneratedPerAttack;
     private int _damage;
     
     
@@ -49,7 +50,7 @@ public class BossMelee : MonoBehaviour, IPrimaryAttack
 
     public int GetResourceGeneratedPerAttack()
     {
-        return 0;
+        return ResourceGeneratedPerAttack;
     }
     
     private void scaleWithDifficulty()
