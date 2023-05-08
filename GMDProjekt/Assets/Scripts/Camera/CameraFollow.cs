@@ -22,6 +22,9 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = toFollow.transform.position - ofset;
+        if (toFollow != null)
+        {
+            transform.position = toFollow.transform.position - ofset;
+        }
     }
 }

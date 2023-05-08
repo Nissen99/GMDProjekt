@@ -1,5 +1,8 @@
 using DefaultNamespace;
+using Items;
 using UnityEngine;
+using UnityEngine.ProBuilder;
+using Math = System.Math;
 
 namespace Combat.Attacks
 {
@@ -10,8 +13,10 @@ namespace Combat.Attacks
         public int Range = 2;
         public int ResourceGeneratedPerAttack = 15;
         private Animator _animator;
+        private Inventory _inventory;
         private void Start()
         {
+            _inventory = GetComponent<Inventory>();
             _animator = GetComponent<Animator>();
         }
 
@@ -22,7 +27,8 @@ namespace Combat.Attacks
                 return false;
             }
             _animator.Play("InvigoratingStrike");
-            toAttack.Attack(BaseDamage);
+            var damage = AttackUtil.GetDamageAfterMultiplier(_inventory.GetAmountOfMainStat(), BaseDamage);
+            toAttack.Attack(damage);
             FindObjectOfType<AudioManager>().Play(AttackAudioClipName);
             return true;
         }
@@ -36,8 +42,7 @@ namespace Combat.Attacks
         {
             return ResourceGeneratedPerAttack;
         }
-
-
+        
     }
 }
 

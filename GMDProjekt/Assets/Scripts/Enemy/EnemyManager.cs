@@ -16,6 +16,7 @@ namespace Enemy
         [CanBeNull] private GameObject player;
         private IAttackable _playerAttackable;
         private IMovement _movement;
+        private IHpController _hpController;
         [CanBeNull] private ISecondary _secondaryAttack;
         [CanBeNull] private IResourceManager _resourceManager;
         private IAttack _primaryAttack;
@@ -35,29 +36,26 @@ namespace Enemy
             _primaryAttack = GetComponent<IAttack>();
             _secondaryAttack = GetComponent<ISecondary>();
             _resourceManager = GetComponent<IResourceManager>();
+            _hpController = GetComponent<IHpController>();
             GetComponent<HpController>().onHealthChange.AddListener(ActionOnDeath);
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (player != null)
+            if (player != null && _playerAttackable.IsAlive() && _hpController.IsAlive())
             {
                 if (!isOnCooldown())
                 {
                     attackPlayer();
                 }
+
                 moveIfNotInRange();
             }
         }
 
         bool attackPlayer()
         {
-            if (!_playerAttackable.IsAlive())
-            {
-                return false;
-            }
-
             if (_secondaryAttack != null && _resourceManager != null)
             {
                 var performedSecondaryAttack = attackingSecondary();
@@ -86,6 +84,7 @@ namespace Enemy
                 _resourceManager.Spend(_secondaryAttack.GetCostOfAttack());
                 return _secondaryAttack.Attack(_playerAttackable);
             }
+
             return false;
         }
 
@@ -102,7 +101,8 @@ namespace Enemy
         void moveIfNotInRange()
         {
             var distanceToAttack = Vector3.Distance(transform.position, _playerAttackable.GetPosition());
-            if (distanceToAttack >= _primaryAttack.GetRange() && (distanceToAttack < RangeToStartMovingTowardsPlayer || isAggroed))
+            if (distanceToAttack >= _primaryAttack.GetRange() &&
+                (distanceToAttack < RangeToStartMovingTowardsPlayer || isAggroed))
             {
                 isAggroed = true;
                 _movement.Move(player.transform.position);

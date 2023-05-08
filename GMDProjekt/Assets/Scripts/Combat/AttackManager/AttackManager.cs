@@ -18,6 +18,7 @@ namespace Combat.AttackManager
         private IMovement _movement;
         private IPrimaryAttack _primaryPrimaryAttack;
         private ISecondary _secondaryAttack;
+        private ISpell _firstSpell;
         
         [SerializeField] private float _globalCooldown = 1f;
 
@@ -26,6 +27,7 @@ namespace Combat.AttackManager
         {
             _primaryPrimaryAttack = GetComponent<IPrimaryAttack>();
             _secondaryAttack = GetComponent<ISecondary>();
+            _firstSpell = GetComponent<ISpell>();
             _movement = GetComponent<IMovement>();
             _resourceManager = GetComponent<IResourceManager>();
         }
@@ -75,6 +77,14 @@ namespace Combat.AttackManager
             }
         }
 
+        public void FirstSpell(Vector3? positionToCast = null, IAttackable toAttack = null)
+        {
+            if (canAttack() && _firstSpell.IsReady())
+            {
+                _firstSpell.Cast(positionToCast, toAttack);
+            }
+        }
+
 
         void attacked(Vector3 positionOfAttacked, int amountOfResource, bool spentResource)
         {
@@ -97,18 +107,18 @@ namespace Combat.AttackManager
             return distanceToAttack <= attackRange;
         }
 
-        bool canAttack( bool toAttackIsAlive, int amountOfResourceForAttack = 0)
+        bool canAttack( bool toAttackIsAlive = true, int amountOfResourceForAttack = 0)
         {
             if (!_resourceManager.HasEnough(amountOfResourceForAttack))
             {
                 FindObjectOfType<AudioManager>().Play(AUDIOCLIPS.MORE_ENERGY_NEEDED);
                 return false;
             }
-            return !isOnCooldown();
+            return !isOnGlobalCooldown();
 
         }
 
-        bool isOnCooldown()
+        bool isOnGlobalCooldown()
         {
             if (nextTimeToAttack == null)
             {

@@ -9,62 +9,62 @@ using Util;
 
 public class BossRoundKick : MonoBehaviour, ISecondary
 {
+    public int Range;
+    public int CostOfAttack;
+    public int BaseDamage = 100;
+    public string AttackClipName;
+    public bool ShouldScaleWithDifficulty;
+    public float DelayBeforeExploding;
 
-        public int Range;
-        public int CostOfAttack;
-        public int BaseDamage = 100;
-        public string AttackClipName;
-        public bool ShouldScaleWithDifficulty;
-        public float DelayBeforeExploding;
-        
-        private Animator _animator;
-        private int _damage;
+    private Animator _animator;
+    private int _damage;
 
-        public ExplosionZone ExplosionZonePrefab;
-        // Start is called before the first frame update
-        void Start()
+    public ExplosionZone ExplosionZonePrefab;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _animator = GetComponent<Animator>();
+        if (ShouldScaleWithDifficulty)
         {
-            _animator = GetComponent<Animator>();
-            if (ShouldScaleWithDifficulty)
-            {
-                scaleWithDifficulty();
-            }
-            else
-            {
-                _damage = BaseDamage;
-            } 
+            scaleWithDifficulty();
         }
-    
-        public int GetRange()
+        else
         {
-            return Range;
+            _damage = BaseDamage;
         }
+    }
 
-        public bool Attack(IAttackable toAttack)
+    public int GetRange()
+    {
+        return Range;
+    }
+
+    public bool Attack(IAttackable toAttack)
+    {
+        if (!AttackUtil.IsInRageToAttack(Range, transform.position, toAttack.GetPosition()))
         {
-            if (!AttackUtil.IsInRageToAttack(Range, transform.position, toAttack.GetPosition()))
-            {
-                return false;
-            }
-           // _animator.Play("BossRoundKick");
-            FindObjectOfType<AudioManager>().Play(AttackClipName);
-
-            // Spawn in the cicle that explodes for damage
-            var explosionZone = Instantiate(ExplosionZonePrefab, transform.position, Quaternion.identity);
-            explosionZone.SetDamage(_damage);
-            Destroy(explosionZone.gameObject, DelayBeforeExploding);
-            return true;
+            return false;
         }
 
-        public int GetCostOfAttack()
-        {
-            return CostOfAttack;
-        }
-    
-        private void scaleWithDifficulty()
-        {
-            var difficultyMultiplier = DifficultyManager.GetInstance().GetDifficultyMultiplier();
-            _damage = difficultyMultiplier * BaseDamage;
-        }
+        _animator.Play("RoundKick");
+        FindObjectOfType<AudioManager>().Play(AttackClipName);
 
+        // Spawn in the cicle that explodes for damage
+        var explosionZone = Instantiate(ExplosionZonePrefab, transform.position, Quaternion.identity);
+        explosionZone.SetDamage(_damage);
+        Destroy(explosionZone.gameObject, DelayBeforeExploding);
+        return true;
+    }
+
+    public int GetCostOfAttack()
+    {
+        return CostOfAttack;
+    }
+
+    private void scaleWithDifficulty()
+    {
+        var difficultyMultiplier = DifficultyManager.GetInstance().GetDifficultyMultiplier();
+        _damage = difficultyMultiplier * BaseDamage;
+    }
 }

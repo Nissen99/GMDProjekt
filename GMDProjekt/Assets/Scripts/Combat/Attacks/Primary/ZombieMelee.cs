@@ -45,7 +45,7 @@ public class ZombieMelee : MonoBehaviour, IAttack
         {
             return false;
         }
-        _animator.Play("InvigoratingStrike");
+        _animator.Play("ZombieStrike");
         toAttack.Attack(_damage);
         FindObjectOfType<AudioManager>().Play(AttackClipName);
         return true;

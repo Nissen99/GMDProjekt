@@ -7,5 +7,8 @@
 
         int GetMaxHealth();
         int GetCurrentHealth();
+        bool IsAlive();
+        void MakeImmune();
+        void MakeDamageable();
     }
 }

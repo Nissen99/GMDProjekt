@@ -9,5 +9,6 @@ namespace Combat.AttackManager
         void PrimaryAttack(IAttackable toAttack);
         void StopPrimaryAttackIntent();
         void SecondaryAttack(IAttackable toAttack);
+        void FirstSpell(Vector3? positionToCast, [CanBeNull] IAttackable toAttack = null);
     }
 }

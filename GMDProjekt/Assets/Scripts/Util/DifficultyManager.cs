@@ -30,10 +30,10 @@ namespace Util
                     _difficultyMultiplier = 1;
                     break;
                 case NIGHTMARE:
-                    _difficultyMultiplier = 2;
+                    _difficultyMultiplier = 4;
                     break;
                 case HELL:
-                    _difficultyMultiplier = 4;
+                    _difficultyMultiplier = 15;
                     break;
                 default:
                     Debug.Log($"No difficulty specified, so will assume {NORMAL}");

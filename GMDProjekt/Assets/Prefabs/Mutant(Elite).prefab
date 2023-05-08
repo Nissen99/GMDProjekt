@@ -1248,11 +1248,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7639a5b4ab8b2934fbce83e0b197a8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 2000
+  BaseMaxHp: 1000
   currentHp: 0
   DeathSoundClipName: MutantDeath
   ShouldScaleWithDifficulty: 1
   IsPlayer: 0
+  TimeBeforeDespawnAfterDeath: 3
 --- !u!114 &5651426602155043770
 MonoBehaviour:
   m_ObjectHideFlags: 0

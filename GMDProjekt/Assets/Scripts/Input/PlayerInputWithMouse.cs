@@ -8,7 +8,7 @@ namespace Input
 {
     public class PlayerInputWithMouse : MonoBehaviour
     {
-        //private Vector3? _latestMovementClick;
+        public GameObject Inventory;
         [SerializeField] private GameObject toSpawnWhenClicked;
         private delegate void ResetIntents();
 
@@ -25,12 +25,7 @@ namespace Input
             _healthPotion = GetComponent<IHealthPotion>();
             _resetIntents = resetIntent;
         }
-    
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
 
         void OnPrimary(InputValue value)
         {
@@ -78,11 +73,31 @@ namespace Input
             }
         }
 
+        void OnFirstSpell(InputValue value)
+        {
+            var hit = actionTaken();
+            if (hit == null)
+            {
+                return;
+            }
+
+            _attackManager.FirstSpell(hit.Value.transform.position);
+        }
+
         void OnPotion(InputValue value)
         {
             _healthPotion.Use();
         }
 
+        void OnOpenInventory()
+        {
+            Inventory.SetActive(!Inventory.active);
+        }
+
+        void OnCloseInventory()
+        {
+            Inventory.SetActive(false);
+        }
         private RaycastHit? actionTaken()
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());

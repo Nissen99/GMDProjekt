@@ -17,6 +17,7 @@ namespace Combat.HitPoints
         // Start is called before the first frame update
         void Start()
         {
+            GetComponent<HpController>().onHealthChange.AddListener(hideHealthBarOnDied);
             _hpController = GetComponent<IHpController>();
             healthBarUI.SetActive(false);
         }
@@ -24,7 +25,7 @@ namespace Combat.HitPoints
         // Update is called once per frame
         void Update()
         {
-            if (_hpController.GetMaxHealth() == _hpController.GetCurrentHealth())
+            if (_hpController.GetMaxHealth() == _hpController.GetCurrentHealth() || healthBarUI == null)
             {
                 return;
             }
@@ -38,6 +39,14 @@ namespace Combat.HitPoints
         private void setHealthPercentage(int maxHp, int currentHp)
         {
             healthPercentage.value = (float) currentHp/maxHp;;
+        }
+
+        private void hideHealthBarOnDied(int currentHp, int maxHp)
+        {
+            if (currentHp <= 0)
+            {
+                Destroy(healthBarUI.gameObject);
+            }
         }
     }
 }

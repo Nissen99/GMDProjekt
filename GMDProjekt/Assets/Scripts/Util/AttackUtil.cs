@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 namespace Combat.Attacks
@@ -9,6 +10,12 @@ namespace Combat.Attacks
         {
             var distanceToAttack = Vector3.Distance(currentPosition, tragetsPosition);
             return distanceToAttack <= attackRange;
+        }
+        
+        public static int GetDamageAfterMultiplier(int amountOfMainStat, int BaseDamage)
+        {
+            var mainStatMultiplier = Math.Pow(amountOfMainStat, 0.5) + 1;
+            return (int)(BaseDamage * mainStatMultiplier);
         }
     }
 }

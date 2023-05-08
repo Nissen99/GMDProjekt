@@ -35,9 +35,6 @@ namespace Combat.Attacks.Secondary.BossRoundKick
 
         private void OnDestroy()
         {
-            Debug.Log("YSADSADASDDSADSA");
-
-            Debug.Log(playersInZone.Count);
             Instantiate(ExposionPartical, transform.position, Quaternion.identity);
             foreach (var player in playersInZone)
             {

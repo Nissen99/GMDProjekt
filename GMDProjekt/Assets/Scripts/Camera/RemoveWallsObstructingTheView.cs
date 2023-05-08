@@ -22,6 +22,10 @@ public class RemoveWallsObstructingTheView : MonoBehaviour
     // that works, i would much rather do some cool stuff
     private void LateUpdate()
     {
+        if (Player == null)
+        {
+            return;
+        }
         timeSinceLastCheck += Time.deltaTime;
         if (timeSinceLastCheck >= checkInterval)
         {

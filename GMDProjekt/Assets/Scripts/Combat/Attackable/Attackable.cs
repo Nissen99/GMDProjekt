@@ -22,7 +22,7 @@ namespace DefaultNamespace
 
         public bool IsAlive()
         {
-            return gameObject.active;
+            return _hpController.IsAlive();
         }
     }
 }
