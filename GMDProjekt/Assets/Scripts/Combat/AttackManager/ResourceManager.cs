@@ -1,4 +1,5 @@
 using System.Collections;
+using DefaultNamespace;
 using Events;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,8 +9,8 @@ namespace Combat.AttackManager
     public class ResourceManager : MonoBehaviour, IResourceManager
     {
         public int currentResource;
-        public int maxResource;
-        public int resourceRegenRate;
+        public int maxResource = 100;
+        public int resourceRegenRate = 15;
         public ResourceChangedEvent OnResourceChanged;
 
         
@@ -29,7 +30,13 @@ namespace Combat.AttackManager
 
         public bool HasEnough(int amount)
         {
-            return currentResource >= amount;
+            if (currentResource >= amount)
+            {
+                return true;
+            }
+            
+            FindObjectOfType<AudioManager>().Play(AUDIOCLIPS.MORE_ENERGY_NEEDED);
+            return false;
         }
 
         public void Spend(int amount)

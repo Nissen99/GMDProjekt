@@ -1,4 +1,5 @@
-﻿using Combat.Attacks;
+﻿using System;
+using Combat.Attacks;
 using DefaultNamespace;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -8,11 +9,15 @@ namespace Enemy
 {
     public class EnemyManager : MonoBehaviour
     {
+        public int RangeToStartMovingTowardsPlayer = 20;
+        private bool isAggroed;
         [CanBeNull] private GameObject player;
         private IAttackable _playerAttackable;
         private IMovement _movement;
 
         private IAttack _primaryAttack;
+        public bool IsElite;
+        public bool IsBoss;
 
         [SerializeField] private float _globalCooldown = 2f;
 
@@ -25,6 +30,7 @@ namespace Enemy
             _playerAttackable = player.GetComponent<IAttackable>();
             _movement = GetComponent<IMovement>();
             _primaryAttack = GetComponent<IAttack>();
+            GetComponent<HpController>().onHealthChange.AddListener(ActionOnDeath);
         }
 
         // Update is called once per frame
@@ -65,9 +71,31 @@ namespace Enemy
         void moveIfNotInRange()
         {
             var distanceToAttack = Vector3.Distance(transform.position, _playerAttackable.GetPosition());
-            if (distanceToAttack >= _primaryAttack.GetRange())
+            if (distanceToAttack >= _primaryAttack.GetRange() && (distanceToAttack < RangeToStartMovingTowardsPlayer || isAggroed))
             {
+                isAggroed = true;
                 _movement.Move(player.transform.position);
+            }
+        }
+
+        void ActionOnDeath(int currentHp, int maxHp)
+        {
+            if (currentHp <= 0)
+            {
+                Died();
+            }
+        }
+
+        void Died()
+        {
+            if (IsElite)
+            {
+                FindObjectOfType<GameManager>().EliteKilled();
+            }
+
+            if (IsBoss)
+            {
+                FindObjectOfType<GameManager>().BossKilled();
             }
         }
     }

@@ -14,6 +14,7 @@ public class HpController : MonoBehaviour, IHpController
    public HealthChangedEvent onHealthChange;
    public string DeathSoundClipName;
    public bool ShouldScaleWithDifficulty;
+   public bool IsPlayer;
 
 
    // I am using Awake because it is an event that other scripts will likely subscribe to in their start, so we need
@@ -75,6 +76,10 @@ public class HpController : MonoBehaviour, IHpController
     {
         FindObjectOfType<AudioManager>().Play(DeathSoundClipName);
         gameObject.SetActive(false);
+        if (IsPlayer)
+        {
+            FindObjectOfType<GameManager>().GameLost();
+        }
     }
 
     private void scaleWithDifficulty()
