@@ -2235,7 +2235,7 @@ MonoBehaviour:
   BaseDamage: 10
   Range: 2
   AttackClipName: ZombieStrike
-  ShouldScaleWithDifficulty: 0
+  ShouldScaleWithDifficulty: 1
 --- !u!114 &1020581583095184375
 MonoBehaviour:
   m_ObjectHideFlags: 0

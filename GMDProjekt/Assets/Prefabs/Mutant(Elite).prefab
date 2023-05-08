@@ -1199,8 +1199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseDamage: 50
   Range: 3
-  AttackClipName: MutantPunch
-  ShouldScaleWithDifficulty: 0
+  AttackClipName: MutantMelee
+  ShouldScaleWithDifficulty: 1
 --- !u!195 &5651426602155043767
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1250,8 +1250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 2000
   currentHp: 0
-  DeathSoundClipName: 
-  ShouldScaleWithDifficulty: 0
+  DeathSoundClipName: MutantDeath
+  ShouldScaleWithDifficulty: 1
   IsPlayer: 0
 --- !u!114 &5651426602155043770
 MonoBehaviour:
