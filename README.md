@@ -1,5 +1,15 @@
 # GMDProjekt
  
+ DEMO: https://www.youtube.com/watch?v=7kMywelX0d8
+ 
+ 
+ WebGL Build: https://nissen99.github.io/HostedGame/
+ 
+ ________________________________________________________________ 
+ 
+Resources used: 
+
+ 
 Tut for Isometric Camera: https://www.youtube.com/watch?v=optfGhipg-w 
 
 Tut for HealthBar: https://www.youtube.com/watch?v=ZYeXmze5gxg
